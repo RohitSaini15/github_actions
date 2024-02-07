@@ -11,5 +11,11 @@ jobs:
   print_name:
     runs-on: ubuntu-latest
     steps:
-    - name: print name
-      run: echo "Hello Rohit"
+    - name: Create txt file
+      run: echo "rohit" > temp.txt
+      
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-text-artifact
+        path: temp.txt
