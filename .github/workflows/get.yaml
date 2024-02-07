@@ -15,10 +15,10 @@ jobs:
       uses: actions/download-artifact@v2
       with:
           name: my-text-artifact
-          path: tmp.txt
+          path: temp.txt
     
     - name: Read Deployment ID
       id: read_deployment_id
       run: |
-        tmp_id=$(cat tmp.txt)
+        tmp_id=$(cat temp.txt)
         echo "tmp id: $tmp_id"
