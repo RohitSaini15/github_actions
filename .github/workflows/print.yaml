@@ -11,11 +11,13 @@ jobs:
   print_name:
     runs-on: ubuntu-latest
     steps:
-    - name: Create txt file
-      run: echo "rohit" > name.txt
+    # - name: Create txt file
+    #   run: echo "rohit" > name.txt
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: my-text-artifact
-        path: name.txt
+    # - name: Upload artifact
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: my-text-artifact
+    #     path: name.txt
+    - name: run github client
+      run: gh variable set DEPLOYID_BRANCH_NAME --body "Set from workflow"
