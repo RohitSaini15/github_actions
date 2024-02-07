@@ -11,5 +11,14 @@ jobs:
   get_name:
     runs-on: ubuntu-latest
     steps:
-      - name: get name
-        run: echo "hello get name"
+    - name: Download Artifact
+      uses: actions/download-artifact@v2
+      with:
+          name: my-text-artifact
+          path: tmp.txt
+    
+    - name: Read Deployment ID
+      id: read_deployment_id
+      run: |
+        tmp_id=$(cat tmp.txt)
+        echo "tmp id: $tmp_id"
