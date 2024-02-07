@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  hello:
+  print_name:
     runs-on: ubuntu-latest
     steps:
     - name: print name
