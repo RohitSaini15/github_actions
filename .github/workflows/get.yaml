@@ -11,14 +11,18 @@ jobs:
   get_name:
     runs-on: ubuntu-latest
     steps:
-    - name: Download Artifact
-      uses: actions/download-artifact@v2
-      with:
-          name: my-text-artifact
-          path: name.txt
+    # - name: Download Artifact
+    #   uses: actions/download-artifact@v2
+    #   with:
+    #       name: my-text-artifact
+    #       path: name.txt
     
-    - name: Read Deployment ID
-      id: read_deployment_id
-      run: |
-        tmp_id=$(cat name.txt)
-        echo "tmp id: $tmp_id"
+    # - name: Read Deployment ID
+    #   id: read_deployment_id
+    #   run: |
+    #     tmp_id=$(cat name.txt)
+    #     echo "tmp id: $tmp_id"
+    - name: download artifact
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: gh run download --name my-text-artifact
