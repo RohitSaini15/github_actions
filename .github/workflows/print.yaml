@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Create txt file
-      run: echo "rohit" > temp.txt
-      
+      run: echo "rohit" > name.txt
+
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: my-text-artifact
-        path: temp.txt
+        path: name.txt
