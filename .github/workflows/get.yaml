@@ -22,6 +22,7 @@ jobs:
     #   run: |
     #     tmp_id=$(cat name.txt)
     #     echo "tmp id: $tmp_id"
+    - uses: actions/checkout@v3
     - name: download artifact
       env:
         GH_TOKEN: ${{ github.token }}
