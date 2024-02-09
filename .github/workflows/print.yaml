@@ -19,6 +19,9 @@ jobs:
     #   with:
     #     name: my-text-artifact
     #     path: name.txt
+    - name: print repo name
+      run: echo {{github.event.repository.name}}
+      
     - name: Checkout code
       uses: actions/checkout@v2
 
