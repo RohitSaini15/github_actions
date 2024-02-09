@@ -20,12 +20,12 @@ jobs:
     #     name: my-text-artifact
     #     path: name.txt
     - name: print repo name
-      run: echo "$github.event.repository.name"
+      run: echo "${{github.event.repository.name}}"
       
-    - name: Checkout code
-      uses: actions/checkout@v2
+    # - name: Checkout code
+    #   uses: actions/checkout@v2
 
-    - name: run github client
-      env:
-        GH_TOKEN: ${{ github.token }}
-      run: gh variable set DEPLOYID_BRANCH_NAM --body "Set from workflow"
+    # - name: run github client
+    #   env:
+    #     GH_TOKEN: ${{ github.token }}
+    #   run: gh variable set DEPLOYID_BRANCH_NAM --body "Set from workflow"
