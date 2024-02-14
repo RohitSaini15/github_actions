@@ -2,23 +2,35 @@
 name: get name
 
 on:
-  push:
-    branches:
-      - master
+  # push:
+  #   branches:
+  #     - master
   workflow_dispatch:
 
 jobs:
   get_name:
     runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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 
     steps:
-    - name: Download Artifact
-      uses: actions/download-artifact@v2
+    - name: echo
+      run: | 
+        echo "hello"
+    - name: send notification
+      uses: acti0ns/slack@v1
       with:
-          name: my-text-artifact
-          path: temp.txt
+        status: ${{job.status}}
+        steps: ${{toJson(steps)}}
+        channel: "#random"
+      if: always()
+    # - name: Download Artifact
+    #   uses: actions/download-artifact@v2
+    #   with:
+    #       name: my-text-artifact
+    #       path: temp.txt
     
-    - name: Read Deployment ID
-      id: read_deployment_id
-      run: |
-        tmp_id=$(cat temp.txt)
-        echo "tmp id: $tmp_id"
+    # - name: Read Deployment ID
+    #   id: read_deployment_id
+    #   run: |
+    #     tmp_id=$(cat temp.txt)
+    #     echo "tmp id: $tmp_id"
