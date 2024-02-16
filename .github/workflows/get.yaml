@@ -15,19 +15,22 @@ jobs:
     steps:
     - name: echo
       run: | 
-        echo "hello"
-    - name: Post to a Slack channel
-      id: slack
-      uses: slackapi/slack-github-action@v1.25.0
-      with:
-    # Slack channel id, channel name, or user id to post message.
-    # See also: https://api.slack.com/methods/chat.postMessage#channels
-    # You can pass in multiple channels to post to by providing a comma-delimited list of channel IDs.
-        channel-id: 'for-testing'
-    # For posting a simple plain text message
-        slack-message: "GitHub build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
-      env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        echo "TAG_NAME=123" >> $GITHUB_OUTPUT
+    - name: print
+      run: |
+        echo ${{ steps.version.outputs.TAG_NAME }}
+    # - name: Post to a Slack channel
+    #   id: slack
+    #   uses: slackapi/slack-github-action@v1.25.0
+    #   with:
+    # # Slack channel id, channel name, or user id to post message.
+    # # See also: https://api.slack.com/methods/chat.postMessage#channels
+    # # You can pass in multiple channels to post to by providing a comma-delimited list of channel IDs.
+    #     channel-id: 'for-testing'
+    # # For posting a simple plain text message
+    #     slack-message: "GitHub build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+    #   env:
+    #     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
     # - name: send notification
     #   uses: act10ns/slack@v1
     #   with:
