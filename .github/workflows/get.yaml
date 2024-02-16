@@ -2,23 +2,50 @@
 name: get name
 
 on:
-  push:
-    branches:
-      - master
+  # push:
+  #   branches:
+  #     - master
   workflow_dispatch:
 
 jobs:
   get_name:
     runs-on: ubuntu-latest
+    # env:
+      # SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     steps:
-    - name: Download Artifact
-      uses: actions/download-artifact@v2
-      with:
-          name: my-text-artifact
-          path: temp.txt
-    
-    - name: Read Deployment ID
-      id: read_deployment_id
+    - name: echo
+      run: | 
+        echo "TAG_NAME=123" >> $GITHUB_OUTPUT
+      id: version
+    - name: print
       run: |
-        tmp_id=$(cat temp.txt)
-        echo "tmp id: $tmp_id"
+        echo ${{ steps.version.outputs.TAG_NAME }}
+    # - name: Post to a Slack channel
+    #   id: slack
+    #   uses: slackapi/slack-github-action@v1.25.0
+    #   with:
+    # # Slack channel id, channel name, or user id to post message.
+    # # See also: https://api.slack.com/methods/chat.postMessage#channels
+    # # You can pass in multiple channels to post to by providing a comma-delimited list of channel IDs.
+    #     channel-id: 'for-testing'
+    # # For posting a simple plain text message
+    #     slack-message: "GitHub build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+    #   env:
+    #     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+    # - name: send notification
+    #   uses: act10ns/slack@v1
+    #   with:
+    #     status: ${{job.status}}
+    #     steps: ${{toJson(steps)}}
+    #   if: always()
+    # - name: Download Artifact
+    #   uses: actions/download-artifact@v2
+    #   with:
+    #       name: my-text-artifact
+    #       path: temp.txt
+    
+    # - name: Read Deployment ID
+    #   id: read_deployment_id
+    #   run: |
+    #     tmp_id=$(cat temp.txt)
+    #     echo "tmp id: $tmp_id"
