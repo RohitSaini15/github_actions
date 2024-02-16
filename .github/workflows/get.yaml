@@ -16,6 +16,7 @@ jobs:
     - name: echo
       run: | 
         echo "TAG_NAME=123" >> $GITHUB_OUTPUT
+      id: version
     - name: print
       run: |
         echo ${{ steps.version.outputs.TAG_NAME }}
