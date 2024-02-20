@@ -2,23 +2,28 @@
 name: get name
 
 on:
-  push:
-    branches:
-      - master
+  # push:
+  #   branches:
+  #     - master
   workflow_dispatch:
 
 jobs:
   get_name:
     runs-on: ubuntu-latest
     steps:
-    - name: Download Artifact
-      uses: actions/download-artifact@v2
-      with:
-          name: my-text-artifact
-          path: temp.txt
+    # - name: Download Artifact
+    #   uses: actions/download-artifact@v2
+    #   with:
+    #       name: my-text-artifact
+    #       path: name.txt
     
-    - name: Read Deployment ID
-      id: read_deployment_id
-      run: |
-        tmp_id=$(cat temp.txt)
-        echo "tmp id: $tmp_id"
+    # - name: Read Deployment ID
+    #   id: read_deployment_id
+    #   run: |
+    #     tmp_id=$(cat name.txt)
+    #     echo "tmp id: $tmp_id"
+    - uses: actions/checkout@v3
+    - name: download artifact
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: gh run download --name my-text-artifact
