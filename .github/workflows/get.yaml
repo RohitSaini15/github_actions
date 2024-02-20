@@ -13,11 +13,14 @@ jobs:
     steps:
     - name: set variable
       run: |
-        export NAME=ROHIT
+        echo "namidhizdshvzscz" >> log.txt
+        echo "sdgdszgzdsbzdsg" >>  log.txt
     - name: print name
       run: |
-        NAME=jigyasa
-        echo $NAME
+        echo "sdgzdsgvzsbgzgbz" >> log.txt
+        echo "esgzdsgzdgbzg" >> log.txt
+    - name: print log
+      run: cat log.txt
     # - name: Download Artifact
     #   uses: actions/download-artifact@v2
     #   with:
