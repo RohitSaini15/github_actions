@@ -4,7 +4,7 @@ import os
 # Snowflake connection details
 account = os.environ['SF_ACCOUNT']
 user = os.environ['SF_USERNAME']
-password = os.environ['SF_PASSWORD']
+password = os.environ['SNOWFLAKE_PASSWORD']
 warehouse = os.environ['SF_WAREHOUSE']
 database = os.environ['SF_DATABASE']
 schema = os.environ['SF_SCHEMA']
