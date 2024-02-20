@@ -2,12 +2,12 @@ import snowflake.connector
 import os
 
 # Snowflake connection details
-account = os.environ['SNOWFLAKE_ACCOUNT']
-user = os.environ['SNOWFLAKE_USER']
-password = os.environ['SNOWFLAKE_PASSWORD']
-warehouse = os.environ['SNOWFLAKE_WAREHOUSE']
-database = os.environ['SNOWFLAKE_DATABASE']
-schema = os.environ['SNOWFLAKE_SCHEMA']
+account = os.environ['SF_ACCOUNT']
+user = os.environ['SF_USER']
+password = os.environ['SF_PASSWORD']
+warehouse = os.environ['SF_WAREHOUSE']
+database = os.environ['SF_DATABASE']
+schema = os.environ['SF_SCHEMA']
 
 # Connection to Snowflake
 conn = snowflake.connector.connect(
