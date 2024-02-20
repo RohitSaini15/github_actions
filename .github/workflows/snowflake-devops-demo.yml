@@ -38,7 +38,7 @@ jobs:
           SNOWFLAKE_PASSWORD: ${{ secrets.SF_PASSWORD }}
           SF_SCHEMA: ${{ secrets.SF_SCHEMA }}
         run: |
-          INSERT_QUERY="INSERT INTO your_table (NAME,PASSWORD) VALUES ('piyush', 'admin');"
+          INSERT_QUERY="INSERT INTO USER (NAME,PASSWORD) VALUES ('piyush', 'admin');"
 
           # Create a temporary file to store the SQL query
           SQL_FILE=$(mktemp)
