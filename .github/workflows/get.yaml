@@ -11,6 +11,12 @@ jobs:
   get_name:
     runs-on: ubuntu-latest
     steps:
+    - name: set variable
+      run: |
+        NAME=ROHIT
+    - name: print name
+      run: |
+        echo $NAME
     # - name: Download Artifact
     #   uses: actions/download-artifact@v2
     #   with:
@@ -22,8 +28,8 @@ jobs:
     #   run: |
     #     tmp_id=$(cat name.txt)
     #     echo "tmp id: $tmp_id"
-    - uses: actions/checkout@v3
-    - name: download artifact
-      env:
-        GH_TOKEN: ${{ github.token }}
-      run: gh run download --name my-text-artifact
+    # - uses: actions/checkout@v3
+    # - name: download artifact
+    #   env:
+    #     GH_TOKEN: ${{ github.token }}
+    #   run: gh run download --name my-text-artifact
