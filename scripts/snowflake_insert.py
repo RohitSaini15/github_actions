@@ -24,7 +24,7 @@ cursor = conn.cursor()
 
 # Replace with your actual INSERT query
 insert_query = """
-    INSERT INTO your_table (NAME,PASSWORD)
+    INSERT INTO USER (NAME,PASSWORD)
     VALUES (%s, %s)
 """
 
