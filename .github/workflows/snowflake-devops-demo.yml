@@ -24,8 +24,8 @@ jobs:
         run:  |
           curl -O https://sfc-repo.azure.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.0-linux_x86_64.bash
           ls
-          bash snowsql-1.2.0-linux_x86_64.bash
-          # snowsql -v
+          SNOWSQL_DEST=~/bin SNOWSQL_LOGIN_SHELL=~/.profile bash snowsql-1.2.0-linux_x86_64.bash
+          snowsql -v
 
       # - name: Use Python 3.8.x
       #   uses: actions/setup-python@v2.2.1
