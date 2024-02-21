@@ -20,39 +20,30 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Use Python 3.8.x
-        uses: actions/setup-python@v2.2.1
-        with:
-          python-version: 3.8.x
-      - name: Install Dependencies
-        run: |
-          pip install snowflake-connector-python
+      - name: install snowsql
+        run:  |
+          curl -O https://sfc-repo.azure.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.0-linux_x86_64.bash
+          bash snowsql-linux_x86_64.bash
+          snowsql -v
 
-      - name: Run schemachange
-        env:
-          SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
-          SF_USERNAME: ${{ secrets.SF_USERNAME }}
-          SF_ROLE: ${{ secrets.SF_ROLE }}
-          SF_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
-          SF_DATABASE: ${{ secrets.SF_DATABASE }}
-          SNOWFLAKE_PASSWORD: ${{ secrets.SF_PASSWORD }}
-          SF_SCHEMA: ${{ secrets.SF_SCHEMA }}
-        run: |
-          INSERT_QUERY="INSERT INTO USER (NAME,PASSWORD) VALUES ('piyush', 'admin');"
+      # - name: Use Python 3.8.x
+      #   uses: actions/setup-python@v2.2.1
+      #   with:
+      #     python-version: 3.8.x
+      # - name: Install Dependencies
+      #   run: |
+      #     pip install snowflake-connector-python
 
-          # Create a temporary file to store the SQL query
-          SQL_FILE=$(mktemp)
-          echo "$INSERT_QUERY" > "$SQL_FILE"
-
-          # Use curl to execute the query using the Snowflake REST API
-          curl -X POST \
-            --url "https://$SF_ACCOUNT.snowflakecomputing.com/v1/query-request?warehouse=$SF_WAREHOUSE&database=$SF_DATABASE&schema=$SF_SCHEMA" \
-            --header "Content-Type: application/json" \
-            --data-raw "{\"sqlText\": \"$(cat $SQL_FILE | jq -s -R -r @uri)\", \"binds\": []}" \
-            --user "$SF_USERNAME:$SNOWFLAKE_PASSWORD"
-
-          # Clean up the temporary file
-          rm "$SQL_FILE"
+      # - name: Run schemachange
+      #   env:
+      #     SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
+      #     SF_USERNAME: ${{ secrets.SF_USERNAME }}
+      #     SF_ROLE: ${{ secrets.SF_ROLE }}
+      #     SF_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
+      #     SF_DATABASE: ${{ secrets.SF_DATABASE }}
+      #     SNOWFLAKE_PASSWORD: ${{ secrets.SF_PASSWORD }}
+      #     SF_SCHEMA: ${{ secrets.SF_SCHEMA }}
+      #   run: |
           # python $GITHUB_WORKSPACE/scripts/snowflake_insert.py
           # echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
           # python --version
