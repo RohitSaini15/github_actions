@@ -46,9 +46,8 @@ jobs:
           SF_SCHEMA: ${{ secrets.SF_SCHEMA }}
           SF_PRIVATE_KEY: ${{ secrets.SF_PRIVATE_KEY }}
         run: |
-           echo $SF_PRIVATE_KEY
-           echo $SF_PRIVATE_KEY > rsa
-           TOKEN=$(~/bin/snowsql -a $SF_ACCOUNT -u $SF_USER --private-key-path rsa_key)
+           echo $SF_PRIVATE_KEY > rsa_key
+           TOKEN=$(~/bin/snowsql -a $SF_ACCOUNT -u $SF_USER --private-key-path ./rsa_key)
            echo $TOKEN
           # python $GITHUB_WORKSPACE/scripts/snowflake_insert.py
           # echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
