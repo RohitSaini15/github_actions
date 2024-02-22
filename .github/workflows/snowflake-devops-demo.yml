@@ -46,7 +46,34 @@ jobs:
           SF_SCHEMA: ${{ secrets.SF_SCHEMA }}
           SF_PRIVATE_KEY: ${{ secrets.SF_PRIVATE_KEY }}
         run: |
-           echo -n $SF_PRIVATE_KEY > rsa_key.p8
+           echo -n "-----BEGIN PRIVATE KEY-----
+                    MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCtYL+QgThV3U5D
+                    efag+NgLaMpLjTP6UqQkLHJOOm6RDyBdzNCk4JHAGbAATakRNCHJkJjgsslVIYCV
+                    aDzO08nqdOOKNdBF7Ln9ZUWvi824kYITPdUiBVat2ulL/zGR4WK2xblQjqpYHxa0
+                    XOybzH5k3PhxCyIn6Sp6vF7YyFfkbyeyS7rz3m8KU/TjTmKkUEXWra55PNIJm10g
+                    9vWX20tvsv0Uj0e6oqYwMPiZBBZlrc+W4gdlR+5HBMpBrj4K2RNMQrMxMoPNF5rW
+                    fc8FX3aOccxr15966PoszFBcRZZyyUJjqN3MJwsGOOaIbgtHKQWuhHRxrdyZZj2H
+                    cdKLGDrRAgMBAAECggEBAJD72rXomUeUbSIYF5m8/k1sL97GEbU+7mwhjuTEEDnV
+                    wGcwIzn9YWSXForqZnswcSCxfmZIm/xIq9JE/LSofq1FWhH1tlkDAPVZftCxxDKX
+                    24Jjrptog3eXHIikursXEwlshu9KnkBanw3styAB/aAy+L7vZHyjixZf96CoyHcI
+                    7Bs9ZQq57oRmNq94M+CtALVebHMsEIA/NvhD+j0Sn6ziAlL/SS60V2aPO3NyOl9/
+                    Z/0zzUQRQcb7FT9A0Y89gRoeBXb0qPV3xWTvesRDV513NwxWcONlz4FzaUP71//2
+                    y52xv/pNzzmFjwIrR4ptygEQYDLB+DqiTvXiKrmgusECgYEA3JbqnVLekLriVXVC
+                    BHC1DqkRUD7veRC2nqL6JcuJ7SD+E+6Gq/l2G4u9CR63+CgFM4fazwuknN1Megdb
+                    52t5Gc7BOYhg5GehD47+KQV0z9HM5g6ObtosUHlD8qkx9yiv47UW56kP0IEpWqg7
+                    FCuirpI1A7FYDPRxkl0+DP14grUCgYEAyTWuNTCYwpI9DFEcXXzKWco7B9cyG0+h
+                    Kjseo1xflYEql1LB54fcVjMK77VG/XDnEz75a1KjWMYOWw3XnO7dQRxZXGnJAmWg
+                    uIyXP6oWbifYF/5EU4D10yD+PEtCRzXZtnq2q1Kw8OeoFhthuan9apEZAXzRJ2wt
+                    96QFivCn3S0CgYEAy+elD7Aek+JsfVpaoAgfFWIq4uaKLnrIlHNKj81JvayVsI74
+                    Zde+2U+eeeOvYvB7flrCZEj67RWTL+nFhnHOC5EXA7uQ9RDlzJ/9SKYGiGQC51Xl
+                    S4rZE7pEmPbVfQZbMD2g4ptgRvhd5bNEiSycwInd/3/bSH5czVLrnM5gq1ECgYAG
+                    FP5QE0j60KrRvX3rAYOoVSmVohacprqLaUAS1g75mO7tpg3AbuXlISPafRNJQ+lo
+                    NoYZjWTsoQf8Dp4O21WKy02UMopl7SZ/jZhgz0ZgTAoHJ6NvFr3XhO7Kacf2GRWc
+                    o3b0FMrObWIyUN+SWiYT25Dy74/u7iExlB6qxX19fQKBgCaG+xovjSQgYj8E1aIa
+                    tEkUhOEBXzGWtMCyE88yUvO6oN91rgdKCs2XJgZTew9x5Db/1o+GjaWbA+u+55Qm
+                    qNBoaYPLKis7TjBQOYvn9syd8E41z+RjwSHAUAhr5ta3Pd+oK/5mwZQPbrO3HXSF
+                    A1d1e3WiGmBcDLCqWOYq5pYJ
+                    -----END PRIVATE KEY-----" > rsa_key.p8
            chmod 400 rsa_key.p8
            TOKEN=$(~/bin/snowsql --generate-jwt -a ${SF_ACCOUNT} -u ${SF_USERNAME} --private-key-path rsa_key.p8)
            echo $TOKEN
