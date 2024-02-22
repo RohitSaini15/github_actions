@@ -47,6 +47,7 @@ jobs:
           SF_PRIVATE_KEY: ${{ secrets.SF_PRIVATE_KEY }}
         run: |
            echo $SF_PRIVATE_KEY > rsa_key.p8
+           chmod 400 rsa_key.p8
            TOKEN=$(~/bin/snowsql --generate-jwt -a ${SF_ACCOUNT} -u ${SF_USERNAME} --private-key-path rsa_key.p8)
            echo $TOKEN
           # python $GITHUB_WORKSPACE/scripts/snowflake_insert.py
