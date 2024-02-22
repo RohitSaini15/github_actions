@@ -44,7 +44,7 @@ jobs:
           SF_DATABASE: ${{ secrets.SF_DATABASE }}
           # SNOWFLAKE_PASSWORD: ${{ secrets.SF_PASSWORD }}
           SF_SCHEMA: ${{ secrets.SF_SCHEMA }}
-          SF_PRIVATE_KEY: ${{ SF_PRIVATE_KEY }}
+          SF_PRIVATE_KEY: ${{ secrets.SF_PRIVATE_KEY }}
         run: |
            echo ${{ SF_PRIVATE_KEY }} > rsa_key.p8
            TOKEN=$(snowsql -a ${{ SF_ACCOUNT }} -u {{ SF_USER }} --private-key-path rsa_key.p8)
