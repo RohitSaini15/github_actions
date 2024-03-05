@@ -15,6 +15,7 @@ jobs:
       run: |
         sfzszs
     - name: run after error
+      if: always()
       run: |
         echo "hello"
     # - name: print name
