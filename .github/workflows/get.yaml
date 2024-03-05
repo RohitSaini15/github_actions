@@ -13,14 +13,16 @@ jobs:
     steps:
     - name: set variable
       run: |
-        echo "namidhizdshvzscz" >> log.txt
-        echo "sdgdszgzdsbzdsg" >>  log.txt
-    - name: print name
+        sfzszs
+    - name: run after error
       run: |
-        echo "sdgzdsgvzsbgzgbz" >> log.txt
-        echo "esgzdsgzdgbzg" >> log.txt
-    - name: print log
-      run: cat log.txt
+        echo "hello"
+    # - name: print name
+    #   run: |
+    #     echo "sdgzdsgvzsbgzgbz" >> log.txt
+    #     echo "esgzdsgzdgbzg" >> log.txt
+    # - name: print log
+    #   run: cat log.txt
     # - name: Download Artifact
     #   uses: actions/download-artifact@v2
     #   with:
