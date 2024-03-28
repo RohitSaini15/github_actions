@@ -16,8 +16,7 @@ jobs:
     - name: generate logs
       run: |
         echo rohit
-        echo jigyasa
-        >> hello.txt
+        echo jigyasa 2>&1 | tee -a hello.txt
 
     - name: generate logs2
       run: |
