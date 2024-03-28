@@ -11,6 +11,8 @@ jobs:
   get_name:
     runs-on: ubuntu-latest
     steps:
+    # - name: create log file
+    #   run: touch hello.txt
     - name: generate logs
       run: echo rohit > hello.txt
       
@@ -22,7 +24,7 @@ jobs:
         aws-region: ap-south-1
         
     - name: Push Logs to S3
-      run: aws s3 cp logs.txt s3://salesforce-murli/qa/logs.txt
+      run: aws s3 cp hello.txt s3://salesforce-murli/qa/hello.txt
     # - name: set variable
     #   run: |
     #     exit_code=0
