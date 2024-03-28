@@ -14,10 +14,16 @@ jobs:
     # - name: create log file
     #   run: touch hello.txt
     - name: generate logs
-      run: echo rohit | tee -a hello.txt
+      run: |
+        echo rohit
+        echo jigyasa
+        >> hello.txt
 
     - name: generate logs2
-      run: echo saini | tee -a hello.txt
+      run: |
+        echo saini
+        echo saini
+        >> hello.txt
       
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v4
