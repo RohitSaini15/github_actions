@@ -19,6 +19,7 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET }}
+        aws-region: ap-south-1
         
     - name: Push Logs to S3
       run: aws s3 cp logs.txt s3://salesforce-murli/qa/logs.txt
