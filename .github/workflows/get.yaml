@@ -42,7 +42,7 @@ jobs:
         path: logs/
           
     - name: Push Logs to S3
-      run: aws s3 cp hello.txt s3://salesforce-murli/qa/"$(date +'%Y%m%d_%H%M%S')_${GITHUB_RUN_ID}_${GITHUB_SHA}_${GITHUB_EVENT_NAME}.log"
+      run: aws s3 cp hello.txt s3://salesforce-murli/qa/"$(date +'%Y%m%d_%H%M%S')_${GITHUB_RUN_ID}_${GITHUB_REF}_${GITHUB_EVENT_NAME}.log"
     # - name: set variable
     #   run: |
     #     exit_code=0
