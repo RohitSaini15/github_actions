@@ -42,9 +42,7 @@ jobs:
         path: logs/
           
     - name: Push Logs to S3
-      run: |
-        # echo ${{toJSON(github)}}
-        aws s3 cp hello.txt s3://salesforce-murli/qa/"$(date +'%Y%m%d_%H%M%S')_${GITHUB_RUN_ID}_${{github.sha}}_${GITHUB_EVENT_NAME}.log"
+      run: aws s3 cp hello.txt s3://salesforce-murli/qa/"$(date +'%Y%m%d_%H%M%S')_${GITHUB_RUN_ID}_${{github.sha}}_${GITHUB_EVENT_NAME}.log"
     # - name: set variable
     #   run: |
     #     exit_code=0
