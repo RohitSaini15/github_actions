@@ -21,7 +21,7 @@ jobs:
     #     path: name.txt
     - name: print repo name
       run: |
-        echo "hello ${{env.DEPLOYID_BRANCH_NAME}}"
+        echo "hello ${{ env.DEPLOYID_BRANCH_NAME }}"
         BASE64_AZ_DEVOPS_PATH=$(echo -n ${{ env.DEPLOYID_BRANCH_NAME }} | base64)
         echo "BASE64_AZ_DEVOPS_PATH=$BASE64_AZ_DEVOPS_PATH" >> $GITHUB_ENV
     - name: echo
