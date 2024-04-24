@@ -40,7 +40,7 @@ jobs:
         secret-ids: |
           SECRET__, arn:aws:secretsmanager:ap-south-1:214146707312:secret:test-secret-gh-YsoKuY
     - name: echo
-      run: printenv
+      run: echo {{ env.SECRET__ }}
     # - name: print repo name
     #   run: |
     #     echo "hello ${{ vars.NAME }}"
