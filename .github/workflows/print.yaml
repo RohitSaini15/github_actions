@@ -30,7 +30,7 @@ jobs:
         # role-duration-seconds: 1200
         # role-session-name: MySessionName
     - name: Get action secret
-      uses: aws-action/configure-aws-credentials@v4
+      uses: aws-actions/aws-secretmanager-get-secrets@v2
       with:
         secret-ids: |
           SECRET_, arn:aws:secretsmanager:ap-south-1:214146707312:secret:test-secret-gh-YsoKuY
