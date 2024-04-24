@@ -33,7 +33,7 @@ jobs:
       uses: aws-actions/aws-secretsmanager-get-secrets@v2
       with:
         secret-ids: |
-          SECRET_, arn:aws:secretsmanager:ap-south-1:214146707312:secret:test-secret-gh-YsoKuY
+          SECRET__, arn:aws:secretsmanager:ap-south-1:214146707312:secret:test-secret-gh-YsoKuY
     - name: echo
       run: echo ${{ env.SECRET_ }}
     # - name: print repo name
