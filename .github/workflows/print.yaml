@@ -40,7 +40,9 @@ jobs:
         secret-ids: |
           SECRET__, arn:aws:secretsmanager:ap-south-1:214146707312:secret:test-secret-gh-YsoKuY
     - name: echo
-      run: echo "::add-mask::${{ env.SECRET__ }}"
+      run: |
+        echo "::add-mask::test"
+        echo "This is a test"
     # - name: print repo name
     #   run: |
     #     echo "hello ${{ vars.NAME }}"
