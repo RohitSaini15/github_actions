@@ -41,7 +41,7 @@ jobs:
           SECRET__, arn:aws:secretsmanager:ap-south-1:214146707312:secret:test-secret-gh-YsoKuY
     - name: echo
       run: |
-        echo "::add-mask::test"
+        "::add-mask::test"
         echo "This is a test"
     # - name: print repo name
     #   run: |
