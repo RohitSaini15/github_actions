@@ -11,10 +11,15 @@ jobs:
   print_name:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-go@v5
-        with:
-          go-version: ''
-      - run: go version
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        
+      - uses: RohitSaini15/jenkins-clone-test1@main
+      - run: ls
+      # - uses: actions/setup-go@v5
+      #   with:
+      #     go-version: ''
+      # - run: go version
     # - name: Create txt file
     #   run: echo "rohit" > name.txt
 
