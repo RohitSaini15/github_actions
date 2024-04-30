@@ -11,6 +11,8 @@ jobs:
   print_name:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-go@v5
+      - run: go version
     # - name: Create txt file
     #   run: echo "rohit" > name.txt
 
@@ -19,30 +21,30 @@ jobs:
     #   with:
     #     name: my-text-artifact
     #     path: name.txt
-    - name: create env
-      run: echo "name=Rohit" >> $GITHUB_ENV
+    # - name: create env
+    #   run: echo "name=Rohit" >> $GITHUB_ENV
 
-    - name: echo name
-      run: echo "helo ${{ env.name }}"
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET }}
-        aws-region: ap-south-1
+    # - name: echo name
+    #   run: echo "helo ${{ env.name }}"
+    # - name: Configure AWS Credentials
+    #   uses: aws-actions/configure-aws-credentials@v4
+    #   with:
+    #     aws-access-key-id: ${{ secrets.AWS_ACCESS }}
+    #     aws-secret-access-key: ${{ secrets.AWS_SECRET }}
+    #     aws-region: ap-south-1
         # role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
         # role-external-id: ${{ secrets.AWS_ROLE_EXTERNAL_ID }}
         # role-duration-seconds: 1200
         # role-session-name: MySessionName
-    - name: Get action secret
-      uses: aws-actions/aws-secretsmanager-get-secrets@v2
-      with:
-        secret-ids: |
-          SECRET__, arn:aws:secretsmanager:ap-south-1:214146707312:secret:test-secret-gh-YsoKuY
-    - name: echo
-      run: |
-        "::add-mask::test"
-        echo "This is a test"
+    # - name: Get action secret
+    #   uses: aws-actions/aws-secretsmanager-get-secrets@v2
+    #   with:
+    #     secret-ids: |
+    #       SECRET__, arn:aws:secretsmanager:ap-south-1:214146707312:secret:test-secret-gh-YsoKuY
+    # - name: echo
+    #   run: |
+    #     "::add-mask::test"
+    #     echo "This is a test"
     # - name: print repo name
     #   run: |
     #     echo "hello ${{ vars.NAME }}"
