@@ -13,6 +13,8 @@ jobs:
     # env:
       # SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     steps:
+    - name: wait
+      run: sleep 180s
     - name: echo
       run: | 
         echo "TAG_NAME=123" >> $GITHUB_OUTPUT
